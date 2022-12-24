@@ -1,0 +1,143 @@
+HOW TO CREATE AN IMAGE THAT FADES INTO ANOTHER:
+Inside index.html:
+Create 2 images, one with class='image1' and another, class='image2' inside <body></body>.
+
+Inside styles.css:
+(1) Because both images (class='image1' and class='image2') are inside the body, the <body><body> position should be "relative" (the default is static).
+body: { position: relative }
+(2) Create two KEYFRAMES, one for image class='image1' and another for class='image2'.
+(3) For one of the keyframes, name it "image1" (although you can name it anything you want): 
+@keyframes image1 {
+    0% {
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.2;
+    }
+
+    20% {
+        opacity: 0.4;
+    }
+
+    30% {
+        opacity: 0.6;
+    }
+
+    40% {
+        opacity: 0.8;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    60% {
+        opacity: 0.8;
+    }
+
+    70% {
+        opacity: 0.6;
+    }
+
+    80% {
+        opacity: 0.4;
+    }
+
+    90% {
+        opacity: 0.25;
+    }
+
+    100% {
+        opacity: 0.15;
+    }
+}
+
+Note what is happening: The opacity STARTS at 0, then goes to 1 MIDWAY through and then goes back to 0.
+
+(4) Name the other keyframe, "image2":
+
+@keyframes image2 {
+    0% {
+        opacity: 1.0;
+    }
+
+    10% {
+        opacity: 0.8;
+    }
+
+    20% {
+        opacity: 0.6;
+    }
+
+    30% {
+        opacity: 0.4;
+    }
+
+    40% {
+        opacity: 0.2;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    60% {
+        opacity: 0.2;
+    }
+
+    70% {
+        opacity: 0.4;
+    }
+
+    80% {
+        opacity: 0.63;
+    }
+
+    90% {
+        opacity: 0.85;
+    }
+
+    100% {
+        opacity: 1.0;
+    }
+}
+
+This has the OPPOSITE effect of image 1. Here, it STARTS with opacity of 1, then goes to 0 midway through so that it is invisible (wheras image 2 will be FULLY visible), then smoothly goes back to 1 at 100%.
+
+(5) Give the following CSS properties to image 1:
+
+    animation-name: image1;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-duration: 15s;
+    z-index: 1;
+    max-width: 100%;
+    border: 1px solid black;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    * THIS is why we need the <body></body> to have a position: relative, because the image position is absolute (position: absolute). A position: absolute allows you to have top, left, right, bottom positions. Position of relative also allows top, right, left, bottom placement wheras position: static does NOT work with position: absolute.
+    
+    Now, we can strategically place our image using top, right, bottom, left. 
+
+    Having a z-index of 1 will place "image 1" above "image 2" (which has a z-index of 0)
+
+(6) The image 2 css styles:
+
+    animation-name: image2;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-duration: 15s;
+    z-index: 0;
+    max-width: 100%;
+    height: auto;
+    border: 1px solid black;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    * NOTE how BOTH image 1 and image 2 has position: absolute AND top: 0 and bottom: 0. This allows both to occupy the same space, but because "image 2" has a z-index of 0, it will be place BELOW "image 1" which has a z-index of 1.
+
+    Now, as one image's opacity goes to 0, the other will go to 1 (see the keyframes of each) and vice-versa to allow one image to transition to another.

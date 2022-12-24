@@ -1,0 +1,128 @@
+body {
+    background-color: beige;
+    position: relative;
+}
+
+img {
+    max-height: 100vh;
+    min-width: 100%;
+}
+
+.image1 {
+    animation-name: image1;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-duration: 15s;
+    z-index: 1;
+    max-width: 100%;
+    border: 1px solid black;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.image2 {
+    animation-name: image2;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-duration: 15s;
+    z-index: 0;
+    max-width: 100%;
+    height: auto;
+    border: 1px solid black;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+@keyframes image1 {
+    0% {
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.2;
+    }
+
+    20% {
+        opacity: 0.4;
+    }
+
+    30% {
+        opacity: 0.6;
+    }
+
+    40% {
+        opacity: 0.8;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    60% {
+        opacity: 0.8;
+    }
+
+    70% {
+        opacity: 0.6;
+    }
+
+    80% {
+        opacity: 0.4;
+    }
+
+    90% {
+        opacity: 0.25;
+    }
+
+    100% {
+        opacity: 0.15;
+    }
+}
+
+@keyframes image2 {
+    0% {
+        opacity: 1.0;
+    }
+
+    10% {
+        opacity: 0.8;
+    }
+
+    20% {
+        opacity: 0.6;
+    }
+
+    30% {
+        opacity: 0.4;
+    }
+
+    40% {
+        opacity: 0.2;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    60% {
+        opacity: 0.2;
+    }
+
+    70% {
+        opacity: 0.4;
+    }
+
+    80% {
+        opacity: 0.63;
+    }
+
+    90% {
+        opacity: 0.85;
+    }
+
+    100% {
+        opacity: 1.0;
+    }
+}
